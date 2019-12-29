@@ -4,9 +4,14 @@ const express = require('express')
 const bodyParser  = require('body-parser')
 const dotenv = require('dotenv')
 const cors = require('cors')
+const path = require('path')
 
 const app = express()
-dotenv.config()
+const dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
+ 
+if (dotEnv.error) {
+  console.log("[ ERROR dotEnv] ", dotEnv.error.message)
+}
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))

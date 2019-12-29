@@ -31,11 +31,8 @@ const getPlayListByGenre = async (seed_genrer) => {
 	const REQUEST_URL = [
 		SPOTIFY_API_URL,
 		"/recommendations?",
-		"market=US&",
 		"seed_genres=",
-		seed_genrer,
-		"&min_energy=0.9",
-		"&min_popularity=50"
+		seed_genrer
 	].join("")
 	
 	const playlist = await axios.get(REQUEST_URL, {

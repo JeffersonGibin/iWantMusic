@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  backend:
+    container_name: iwantmusic
+    build:
+      context: C:\Users\Jefferson\Desktop\iwantmusic
+      dockerfile: Dockerfile
+    volumes:
+      - C:\Users\Jefferson\Desktop\iwantmusic:/home/src/app:rw
+    ports:
+      - "4000:4000"
+    command: sh -c 'npm i && npm run start'

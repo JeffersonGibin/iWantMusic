@@ -1,0 +1,29 @@
+{
+  "name": "iwantmusic",
+  "version": "1.0.0",
+  "description": "This is advanced test to job opportunity at iFood",
+  "main": "/src/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js dotenv_config_path=/.env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeffersonGibin/iwantmusic.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeffersonGibin/iwantmusic/issues"
+  },
+  "homepage": "https://github.com/JeffersonGibin/iwantmusic#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

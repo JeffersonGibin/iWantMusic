@@ -6,7 +6,7 @@ const {
 const getTemperatureByCityName = async (city_name) => {
     const token = process.env.WEATHER_APP_ID
 
-    if(!token || !city_name) return false
+    if(!token || !city_name) throw Error()
     
     const REQUEST_URL = [
         WEATHER_MAP_API_URL,
@@ -26,9 +26,6 @@ const getTemperatureByCityName = async (city_name) => {
             max: response.data.main.temp_max
         }
     ))
-	.catch(e => ({
-        status: false
-    }))
 }
 
 module.exports = {

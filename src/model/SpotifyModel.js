@@ -1,6 +1,7 @@
 const axios = require("axios")
 const {
-	SPOTIFY_API_URL
+	SPOTIFY_API_URL,
+	SPOTIFY_ACCOUNT_API_URL
 } = require("../constants/SpotifyConstant")
 
 const getToken = async () => {
@@ -9,7 +10,7 @@ const getToken = async () => {
 
 	return await axios({
 		method: 'post',
-		url: 'https://accounts.spotify.com/api/token',
+		url: SPOTIFY_ACCOUNT_API_URL + '/api/token',
 		headers: {
 			'Authorization': 'Basic ' + basicAuthToken,
 			'Content-Type': 'application/x-www-form-urlencoded'
@@ -19,38 +20,31 @@ const getToken = async () => {
 		},
 		json: true,
 	})
-	.then(body => body.data.access_token || false)
-	.catch(e => e.response.data)
+	.then(body => body.data.access_token)
 }
 
-const getPlayListByGenre = async (genre_speed) => {
+const getPlayListByGenre = async (seed_genrer) => {
 	const token = await getToken() 
 	
-	if(!token || !genre_speed) return false
-
+	if(!token || !seed_genrer) throw Error()
 	
 	const REQUEST_URL = [
 		SPOTIFY_API_URL,
 		"/recommendations?",
 		"market=US&",
 		"seed_genres=",
-		genre_speed,
+		seed_genrer,
 		"&min_energy=0.9",
 		"&min_popularity=50"
 	].join("")
 	
 	const playlist = await axios.get(REQUEST_URL, {
-		headers: {
-			'Authorization': "Bearer " + token
-        }
+		headers: { 'Authorization': "Bearer " + token }
     })
 	.then(response => response.data)
-	.catch(e => ({
-        status: false
-    }))
 
 	return playlist.tracks.map((item) => ({
-		music: item.name,
+		track: item.name,
 		artists: item.artists.map((artist) => artist.name),
 		album: item.album.name
 	})) || []

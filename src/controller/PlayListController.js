@@ -1,6 +1,6 @@
 const { getPlayListByGenre } = require("../model/SpotifyModel")
 const WeatherMapModel = require("../model/WeatherMapModel")
-const { recomendationGenreMusic } = require("../service/PlayListRecomendationService")
+const { recomendationGenreMusic } = require("../service/PlayListService")
 
 const getPlayList = async (req, res, cityName) => {
     const { temp } = await WeatherMapModel.getTemperatureByCityName(cityName)

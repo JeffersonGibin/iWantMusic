@@ -1,6 +1,7 @@
 
 const { normalizeString } = require("./utils/NormalizeString")
 const PlayList = require("./controller/PlayListController")
+const { MSG_INPUT_REQUIRED } = require("./constants/MessageConstant")
 
 module.exports.routeVersion = (req, res) => {
     res.status(200).send({
@@ -15,7 +16,7 @@ module.exports.routeRecomendationMusic = (req, res) => {
     if(cityName == ""){
         res.status(200).json({
             status: false,
-            msg: "Informe o nome de uma cidade"
+            msg: MSG_INPUT_REQUIRED
         });
     }
 

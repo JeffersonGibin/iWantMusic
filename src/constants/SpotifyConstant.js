@@ -2,17 +2,17 @@
 /**
  * URL API
 */
-const SPOTIFY_API_VERSION = "v1";
-const SPOTIFY_API_URL = "https://api.spotify.com/" + SPOTIFY_API_VERSION;
-const SPOTIFY_ACCOUNT_API_URL = "https://accounts.spotify.com";
+const SPOTIFY_API_VERSION = "v1"
+const SPOTIFY_API_URL = "https://api.spotify.com/" + SPOTIFY_API_VERSION
+const SPOTIFY_ACCOUNT_API_URL = "https://accounts.spotify.com"
 
 /**
  * Seed Genres Music
 */
-const SPOTIFY_GENRE_SEED_ROCK = "rock-n-roll";
-const SPOTIFY_GENRE_SEED_CLASSIC_MUSIC = "classical";
-const SPOTIFY_GENRE_SEED_PARTY = "party";
-const SPOTIFY_GENRE_SEED_POP = "pop";
+const SPOTIFY_GENRE_SEED_ROCK = "rock-n-roll"
+const SPOTIFY_GENRE_SEED_CLASSIC_MUSIC = "classical"
+const SPOTIFY_GENRE_SEED_PARTY = "party"
+const SPOTIFY_GENRE_SEED_POP = "pop"
 
 module.exports = {
     SPOTIFY_API_URL,

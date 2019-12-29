@@ -1,6 +1,7 @@
 const { getPlayListByGenre } = require("../model/SpotifyModel")
 const WeatherMapModel = require("../model/WeatherMapModel")
 const { recomendationGenreMusic } = require("../service/PlayListService")
+const { MSG_PLAYLIST_NOT_FOUND } = require("../constants/MessageConstant")
 
 const getPlayList = async (req, res, cityName) => {
     try {
@@ -15,16 +16,16 @@ const getPlayList = async (req, res, cityName) => {
         res.status(200).json({
             status: true,
             temp: temp,
-            msg: "Preparamos essa playlist aposto que vai adorar :)",
+            msg: MSG_PLAYLIST_SUCCESS,
             recomendations: playList
-        });
+        })
             
     } catch (error) {
         res.status(200).json({
             status: false,
-            msg: "Poxa que pena, não foi possível encontra uma Playlist :'(",
+            msg: MSG_PLAYLIST_NOT_FOUND,
             recomendations: []
-        });
+        })
     }
 }
 

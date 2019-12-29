@@ -1,18 +1,23 @@
-const { MSG_PLAYLIST_NOT_FOUND } = require("./constants/MessageConstant")
-
+const cors = require('cors')
+const dotenv = require('dotenv')
 const express = require('express')
 const bodyParser  = require('body-parser')
-const dotenv = require('dotenv')
-const cors = require('cors')
-const path = require('path')
+
+const { MSG_PLAYLIST_NOT_FOUND } = require("./constants/MessageConstant")
 
 const app = express()
-app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
 app.use(cors())
-app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.disable('x-powered-by')
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
+
+if(!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_SECRET_ID || !process.env.WEATHER_APP_ID){
+    console.log("[ ** ERROR CREDENTIALS NOT FOUND ** ] Add your credentials in /env/.env ")
+    process.exit()
+}
 
 app.use((err, req, res, next) => {
     if (err) {

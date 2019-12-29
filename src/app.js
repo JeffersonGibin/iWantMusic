@@ -7,11 +7,7 @@ const cors = require('cors')
 const path = require('path')
 
 const app = express()
-const dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
- 
-if (dotEnv.error) {
-  console.log("[ ERROR dotEnv] ", dotEnv.error.message)
-}
+app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))

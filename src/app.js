@@ -3,7 +3,8 @@ const dotenv = require('dotenv')
 const express = require('express')
 const bodyParser  = require('body-parser')
 
-const { MSG_PLAYLIST_NOT_FOUND } = require("./constants/MessageConstant")
+const MessageConstant = require("./constants/MessageConstant")
+const playlistCache = require("./cache/cache.json")
 
 const app = express()
 
@@ -11,7 +12,6 @@ app.use(cors())
 app.use(bodyParser.json())
 app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
-
 app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
 if(!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_SECRET_ID || !process.env.WEATHER_APP_ID){
@@ -21,10 +21,10 @@ if(!process.env.SPOTIFY_CLIENT_ID || !process.env.SPOTIFY_SECRET_ID || !process.
 
 app.use((err, req, res, next) => {
     if (err) {
-        res.status(err.status || 500).json({
-            status: false,
-            msg: MSG_PLAYLIST_NOT_FOUND,
-            recomendations: []
+        console.log("[** LOG ** ] ", MessageConstant.MSG_ERROR)
+        res.status(200).json({
+            msg: MessageConstant.MSG_PLAYLIST_RECOMENDATIONS,
+            recomendations: playlistCache
         })
     }
 })

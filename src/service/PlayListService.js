@@ -2,11 +2,12 @@ const {
     SPOTIFY_GENRE_SEED_CLASSIC_MUSIC,
     SPOTIFY_GENRE_SEED_PARTY,
     SPOTIFY_GENRE_SEED_ROCK,
-    SPOTIFY_GENRE_SEED_POP
+    SPOTIFY_GENRE_SEED_POP,
+    SPOTIFY_GENRES_MIXIN
 } = require("../constants/SpotifyConstant")
 
 module.exports.recomendationGenreMusic = (temp) => {
-    if(!temp) return false
+    if(!temp) return SPOTIFY_GENRES_MIXIN
 
     //If temperature (celcius) is above 30 degrees, suggest tracks for party
     if(temp > 30){

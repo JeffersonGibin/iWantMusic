@@ -1,32 +1,30 @@
+const { recomendationGenreMusic } = require("../service/PlayListService")
+const MessageConstant = require("../constants/MessageConstant")
 const { getPlayListByGenre } = require("../model/SpotifyModel")
 const WeatherMapModel = require("../model/WeatherMapModel")
-const { recomendationGenreMusic } = require("../service/PlayListService")
-const { MSG_PLAYLIST_NOT_FOUND, MSG_PLAYLIST_SUCCESS } = require("../constants/MessageConstant")
+const playlistCache = require("../cache/cache.json")
 
 const getPlayList = async (req, res, cityName) => {
     try {
-        
         const { temp } = await WeatherMapModel.getTemperatureByCityName(cityName)
-        
-        if(!temp) {
-            throw Error()
-        }
-        
         const genre = recomendationGenreMusic(temp)
         const playList = await getPlayListByGenre(genre)
         
+        if(!playList) {
+            throw Error()
+        }
+        
         res.status(200).json({
-            status: true,
             temp: temp,
-            msg: MSG_PLAYLIST_SUCCESS,
+            msg: MessageConstant.MSG_PLAYLIST_SUCCESS,
             recomendations: playList
         })
             
     } catch (error) {
+        console.log("[** LOG ** ] ", MessageConstant.MSG_ERROR)
         res.status(200).json({
-            status: false,
-            msg: MSG_PLAYLIST_NOT_FOUND,
-            recomendations: []
+            msg: MessageConstant.MSG_PLAYLIST_RECOMENDATIONS,
+            recomendations: playlistCache
         })
     }
 }

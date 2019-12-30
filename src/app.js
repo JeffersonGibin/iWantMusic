@@ -15,16 +15,9 @@ app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
-router.use((err, req, res, next) => {
-    if (err.status === 404) {
-        return res.status(400).render('404')
-    }
-
-    if (err.status === 500) {
-        return res.status(500).render('500')
-    }
-
-   next()
+app.use((err, req, res, next) => {
+    res.json(err)
+    next(err)
 })
 
 app.use((err, req, res, next) => {

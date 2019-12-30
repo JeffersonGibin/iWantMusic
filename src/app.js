@@ -15,13 +15,10 @@ app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
-app.error((err, req, res, next) => {
-    if (err instanceof NotFound) {
-        res.render("<p>Page not found!</p>");
-    } else {
-        next(err);
-    }
-});
+app.use((err, req, res, next) => {
+    res.json(err)
+    next(err)
+})
 
 app.use((err, req, res, next) => {
     if (err) {

@@ -15,8 +15,8 @@ app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
-app.use((req, res, next) => {
-    res.json(req)
+app.use((err, req, res, next) => {
+    res.json(err)
     next(err)
 })
 

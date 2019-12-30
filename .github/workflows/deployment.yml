@@ -31,6 +31,6 @@ jobs:
         host: ${{ secrets.MY_SERVER_HOST }}
         username: ${{ secrets.MY_SERVER_USER }}
         password: ${{ secrets.MY_SERVER_PASSWORD }}     
-        script: TEST
+        script: cd /var/wwww/iwantmusic && git pull && pwd
       env:
         CI: true

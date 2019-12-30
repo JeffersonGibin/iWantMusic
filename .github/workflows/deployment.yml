@@ -28,6 +28,6 @@ jobs:
     - name: movi file to server
       run: ./scripts/movie-file.sh  
       env:
-        MY_SERVER_HOST: $MY_SERVER_HOST
-        MY_SERVER_PASSWORD: $MY_SERVER_PASSWORD
+        MY_SERVER_HOST: ${{ secrets.MY_SERVER_HOST }}
+        MY_SERVER_PASSWORD: ${{ secrets.MY_SERVER_PASSWORD }} 
         CI: true

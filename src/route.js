@@ -3,6 +3,13 @@ const { MSG_INPUT_REQUIRED } = require("./constants/MessageConstant")
 const { normalizeString } = require("./utils/NormalizeString")
 const PlayList = require("./controller/PlayListController")
 
+module.exports.welcome = (req, res) => {
+    res.status(200).json({
+        application: "Welcome :)",
+        now: new Date()
+    });
+}
+
 module.exports.routeVersion = (req, res) => {
     res.status(200).json({
         application: "iWantMusic",

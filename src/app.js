@@ -35,8 +35,9 @@ Notify.emit("onCredentials", {
     WEATHER_APP_ID: process.env.WEATHER_APP_ID,
 });
 
-const { routeVersion, routeRecomendationMusic } = require("./route")
+const { welcome, routeVersion, routeRecomendationMusic } = require("./route")
 
+app.get('/', welcome)
 app.get('/v1', routeVersion)
 app.get('/v1/recommendations/music/city', routeRecomendationMusic)
 

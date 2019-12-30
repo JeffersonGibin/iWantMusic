@@ -32,7 +32,6 @@ jobs:
         username: ${{ secrets.MY_SERVER_USER }}
         password: ${{ secrets.MY_SERVER_PASSWORD }}     
         script: |
-          cd /var/wwww/iwantmusic
-          git pull
+          mkdir testezinho
       env:
         CI: true

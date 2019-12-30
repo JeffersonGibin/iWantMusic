@@ -1,12 +1,15 @@
-const {
-    SPOTIFY_GENRE_SEED_CLASSIC_MUSIC,
-    SPOTIFY_GENRE_SEED_PARTY,
-    SPOTIFY_GENRE_SEED_ROCK,
-    SPOTIFY_GENRE_SEED_POP,
-    SPOTIFY_GENRES_MIXIN
-} = require("../constants/SpotifyConstant")
+const SpotifyConstant = require("../constants/SpotifyConstant")
 
 module.exports.recomendationGenreMusic = (temp) => {
+    const  {
+        SPOTIFY_GENRE_SEED_CLASSIC_MUSIC,
+        SPOTIFY_GENRE_SEED_PARTY,
+        SPOTIFY_GENRE_SEED_ROCK,
+        SPOTIFY_GENRE_SEED_POP,
+        SPOTIFY_GENRES_MIXIN
+    } = SpotifyConstant
+
+    // If not exist temperature then use mixin music
     if (!temp) return SPOTIFY_GENRES_MIXIN
 
     //If temperature (celcius) is above 30 degrees, suggest tracks for party

@@ -15,6 +15,11 @@ app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
+app.use((req, res, next) => {
+    req.json(req)
+    next(err)
+})
+
 app.use((err, req, res, next) => {
     if (err) {
         Notify.emit("onAPIError", {
@@ -33,7 +38,7 @@ Notify.emit("onCredentials", {
     SPOTIFY_CLIENT_ID: process.env.SPOTIFY_CLIENT_ID,
     SPOTIFY_SECRET_ID: process.env.SPOTIFY_SECRET_ID,
     WEATHER_APP_ID: process.env.WEATHER_APP_ID,
-});
+})
 
 const { welcome, routeVersion, routeRecomendationMusic } = require("./route")
 

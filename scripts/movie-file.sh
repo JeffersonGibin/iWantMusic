@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "Accessing Server"
-ssh $MY_SERVER_HOST
+sudo ssh $MY_SERVER_HOST

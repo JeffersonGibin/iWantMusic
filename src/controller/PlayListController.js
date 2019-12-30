@@ -9,17 +9,17 @@ const getPlayList = async (req, res, cityName) => {
         const { temp } = await WeatherMapModel.getTemperatureByCityName(cityName)
         const genre = recomendationGenreMusic(temp)
         const playList = await getPlayListByGenre(genre)
-        
-        if(!playList) {
+
+        if (!playList) {
             throw Error()
         }
-        
+
         res.status(200).json({
             temp: temp,
             msg: MessageConstant.MSG_PLAYLIST_SUCCESS,
             recomendations: playList
         })
-            
+
     } catch (error) {
         res.status(200).json({
             msg: MessageConstant.MSG_PLAYLIST_RECOMENDATIONS,

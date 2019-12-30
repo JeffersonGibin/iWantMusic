@@ -16,7 +16,7 @@ event.on('onDotEnv', (dotEnv) => {
 });
 
 event.on('onCredentials', (credentials) => {
-    if(!credentials.SPOTIFY_CLIENT_ID || !credentials.SPOTIFY_SECRET_ID || !credentials.WEATHER_APP_ID){
+    if (!credentials.SPOTIFY_CLIENT_ID || !credentials.SPOTIFY_SECRET_ID || !credentials.WEATHER_APP_ID) {
         console.log("[ ** ERROR CREDENTIALS NOT FOUND ** ] Add your credentials in /env/.env ")
         process.exit()
     }

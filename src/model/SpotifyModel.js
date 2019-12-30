@@ -22,33 +22,33 @@ const getToken = async () => {
 		},
 		json: true,
 	})
-	.then(body => body.data.access_token)
+		.then(body => body.data.access_token)
 }
 
 const getPlayListByGenre = async (seed_genrer) => {
 	try {
-		const token = await getToken() 
-		
-		if(!token || !seed_genrer) throw Error()
-		
+		const token = await getToken()
+
+		if (!token || !seed_genrer) throw Error()
+
 		const REQUEST_URL = [
 			SPOTIFY_API_URL,
 			"/recommendations?",
 			"seed_genres=",
 			seed_genrer
 		].join("")
-		
+
 		const playlist = await axios.get(REQUEST_URL, {
 			headers: { 'Authorization': "Bearer " + token }
 		})
-		.then(response => response.data)
-	
+			.then(response => response.data)
+
 		return playlist.tracks.map((item) => ({
 			track: item.name,
 			artists: item.artists.map((artist) => artist.name),
 			album: item.album.name
 		})) || []
-		
+
 	} catch (error) {
 		Notify.emit("onIntegrationError", "[Integration Spotify Error ] " + error);
 	}

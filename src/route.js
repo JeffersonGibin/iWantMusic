@@ -13,7 +13,7 @@ module.exports.routeVersion = (req, res) => {
 module.exports.routeRecomendationMusic = (req, res) => {
     const cityName = normalizeString(req.query.name) || ""
 
-    if(cityName == ""){
+    if (cityName == "") {
         res.status(200).json({
             status: false,
             msg: MSG_INPUT_REQUIRED

@@ -1,7 +1,7 @@
 const cors = require('cors')
 const dotenv = require('dotenv')
 const express = require('express')
-const bodyParser  = require('body-parser')
+const bodyParser = require('body-parser')
 
 const MessageConstant = require("./constants/MessageConstant")
 const playlistCache = require("./cache/cache.json")
@@ -21,7 +21,7 @@ app.use((err, req, res, next) => {
             msg: MessageConstant.MSG_ERROR,
             err: err
         })
-        
+
         res.status(200).json({
             msg: MessageConstant.MSG_PLAYLIST_RECOMENDATIONS,
             recomendations: playlistCache

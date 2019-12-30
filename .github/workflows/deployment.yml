@@ -29,6 +29,7 @@ jobs:
         script: |
           cd /var/www/iwantmusic
           git pull
+          docker stop iwantmusic
           docker-compose up --build -d
       env:
         CI: true

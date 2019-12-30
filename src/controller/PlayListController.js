@@ -21,7 +21,6 @@ const getPlayList = async (req, res, cityName) => {
         })
             
     } catch (error) {
-        console.log("[** LOG ** ] ", MessageConstant.MSG_ERROR)
         res.status(200).json({
             msg: MessageConstant.MSG_PLAYLIST_RECOMENDATIONS,
             recomendations: playlistCache

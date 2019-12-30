@@ -1,11 +1,9 @@
 const app = require("./src/app")
+const Notify = require('./src/Notify')
 const port = process.env.APP_PORT || 4000;
 
-if (app.dotEnv.error) {
-	console.log("[ ERROR dotEnv] ", app.dotEnv.error.message)
-	process.exit()
-}
+app.dotEnv && Notify.emit("onDotEnv", app.dotEnv);
 
 app.listen(port, () => {
-	console.log(`Server is ready!`)
+	Notify.emit("onServer", "Server is Ready [ Port " + port + " ] :) ");
 })

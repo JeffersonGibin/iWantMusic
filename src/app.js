@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
 app.use((req, res, next) => {
-    req.json(req)
+    res.json(req)
     next(err)
 })
 

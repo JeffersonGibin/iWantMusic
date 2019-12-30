@@ -1,14 +1,14 @@
-const { recomendationGenreMusic } = require("../service/PlayListService")
+const WeatherMapRepository = require("../repository/WeatherMapRepository")
+const SpotifyRepository = require("../repository/SpotifyRepository")
 const MessageConstant = require("../constants/MessageConstant")
-const { getPlayListByGenre } = require("../model/SpotifyModel")
-const WeatherMapModel = require("../model/WeatherMapModel")
+const PlayListService = require("../service/PlayListService")
 const playlistCache = require("../cache/cache.json")
 
 const getPlayList = async (req, res, cityName) => {
     try {
-        const { temp } = await WeatherMapModel.getTemperatureByCityName(cityName)
-        const genre = recomendationGenreMusic(temp)
-        const playList = await getPlayListByGenre(genre)
+        const { temp } = await WeatherMapRepository.getTemperatureByCityName(cityName)
+        const genre = PlayListService.recomendationGenreMusic(temp)
+        const playList = await SpotifyRepository.getPlayListByGenre(genre)
 
         if (!playList) {
             throw Error()

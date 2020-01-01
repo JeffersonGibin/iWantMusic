@@ -17,6 +17,9 @@ const getPlayList = async (req, res, params) => {
         }else {
             throw Error()
         }
+
+
+        console.log(apiResult)
         
         const genre = PlayListService.recomendationGenreMusic(apiResult.temp)
         const playList = await SpotifyRepository.getPlayListByGenre(genre)

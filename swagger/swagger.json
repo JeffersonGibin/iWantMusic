@@ -1,0 +1,102 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "",
+      "version": "1.0.0",
+      "title": "iWantMusic - API DOCUMENTATION"
+    },
+    "host": "localhost:4000",
+    "basePath": "/v1",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/recommendations/music/localization": {
+        "get": {
+          "tags": [
+            "Recomendations"
+          ],
+          "summary": "Recomendations of music",
+          "description": "",
+          "operationId": "city",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "city",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false,
+              "description": "name of city"
+            },
+            {
+              "name": "lat",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false,
+              "description": "Coordinates of Latitude"
+            },
+            {
+              "name": "lon",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              },
+              "required": false,
+              "description": "Coordinates of Longitude"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success",
+              "schema": {
+                "$ref": "#/definitions/Response"
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Response": {
+        "type": "object",
+        "properties": {
+          "temp": {
+            "type": "integer"
+          },
+          "city": {
+            "type": "string"
+          },
+          "msg": {
+            "type": "string"
+          },
+          "recomendations": {
+            "$ref": "#/definitions/Recomendations"
+          }
+        }
+      },
+      "Recomendations": {
+        "type": "object",
+        "properties": {
+          "track": {
+            "type": "string"
+          },
+          "artists": {
+            "type": "array"
+          },
+          "album": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "externalDocs": {
+      "description": "Repository Github",
+      "url": "https://github.com/JeffersonGibin/iwantmusic"
+    }
+  }

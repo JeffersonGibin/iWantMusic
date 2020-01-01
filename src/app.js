@@ -2,6 +2,7 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 const express = require('express')
 const bodyParser = require('body-parser')
+const swaggerUi = require('swagger-ui-express'), swaggerDocument = require('../swagger/swagger.json')
 
 const MessageConstant = require("./constants/MessageConstant")
 const playlistCache = require("./cache/cache.json")
@@ -14,11 +15,6 @@ app.use(bodyParser.json())
 app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
-
-app.use((err, req, res, next) => {
-    res.json(err)
-    next(err)
-})
 
 app.use((err, req, res, next) => {
     if (err) {
@@ -45,5 +41,6 @@ const { welcome, routeVersion, routeRecomendationMusic } = require("./route")
 app.get('/', welcome)
 app.get('/v1', routeVersion)
 app.get('/v1/recommendations/music/localization', routeRecomendationMusic)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 module.exports = app

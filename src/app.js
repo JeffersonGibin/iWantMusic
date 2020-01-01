@@ -44,6 +44,6 @@ const { welcome, routeVersion, routeRecomendationMusic } = require("./route")
 
 app.get('/', welcome)
 app.get('/v1', routeVersion)
-app.get('/v1/recommendations/music/city', routeRecomendationMusic)
+app.get('/v1/recommendations/music/localization', routeRecomendationMusic)
 
 module.exports = app

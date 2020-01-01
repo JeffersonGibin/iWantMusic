@@ -4,18 +4,30 @@ const MessageConstant = require("../constants/MessageConstant")
 const PlayListService = require("../service/PlayListService")
 const playlistCache = require("../cache/cache.json")
 
-const getPlayList = async (req, res, cityName) => {
+const getPlayList = async (req, res, params) => {
+    
     try {
-        const { temp } = await WeatherMapRepository.getTemperatureByCityName(cityName)
-        const genre = PlayListService.recomendationGenreMusic(temp)
+        let apiResult = {}
+        if(params.cityName){
+            apiResult = await WeatherMapRepository
+                .getTemperatureByCityName(params.cityName)
+        } else if(params.coordinates){
+            apiResult = await WeatherMapRepository
+                .getTemperatureByCoordinates(params.coordinates)
+        }else {
+            throw Error()
+        }
+        
+        const genre = PlayListService.recomendationGenreMusic(apiResult.temp)
         const playList = await SpotifyRepository.getPlayListByGenre(genre)
-
+        
         if (!playList) {
             throw Error()
         }
 
         res.status(200).json({
-            temp: temp,
+            temp: apiResult.temp,
+            city: params.cityName || apiResult.city || "",
             msg: MessageConstant.MSG_PLAYLIST_SUCCESS,
             recomendations: playList
         })

@@ -4,35 +4,47 @@ const {
 } = require("../constants/WeatherMapConstant")
 const Notify = require('../Notify')
 
+const handleParamTemperature = (city_name, coordinates) => {
+    if(city_name) {
+        return  `q=${city_name}`
+    }else{
+        return `lat=${coordinates.lat}&lon=${coordinates.lon}`
+    }  
+}
+
+const getTemperature = async (city_name, coordinates) => {
+    const param = handleParamTemperature(city_name, coordinates)
+    const token = process.env.WEATHER_APP_ID
+    
+    if (!token) throw Error()
+
+    return await axios.get(`${WEATHER_MAP_API_URL}weather?${param}&units=metric&appid=${token}`)
+        .then(response => (
+            {
+                success: true,
+                temp: response.data.main.temp,
+                city: response.data.name
+            }
+        ))
+}
+
+const getTemperatureByCoordinates = async (coordinates) => {
+    try {
+       return await getTemperature(null, coordinates)
+    } catch (error) {
+        Notify.emit("onIntegrationError", "[Integration Open Weather Error ] " + error);
+    }
+}
+
 const getTemperatureByCityName = async (city_name) => {
     try {
-        const token = process.env.WEATHER_APP_ID
-
-        if (!token || !city_name) throw Error()
-
-        const REQUEST_URL = [
-            WEATHER_MAP_API_URL,
-            "weather?q=",
-            city_name,
-            "&units=metric",
-            "&appid=",
-            token
-        ].join("")
-
-        return await axios.get(REQUEST_URL)
-            .then(response => (
-                {
-                    success: true,
-                    temp: response.data.main.temp,
-                    min: response.data.main.temp_min,
-                    max: response.data.main.temp_max
-                }
-            ))
+       return await getTemperature(city_name)
     } catch (error) {
         Notify.emit("onIntegrationError", "[Integration Open Weather Error ] " + error);
     }
 }
 
 module.exports = {
-    getTemperatureByCityName
+    getTemperatureByCityName,
+    getTemperatureByCoordinates
 }

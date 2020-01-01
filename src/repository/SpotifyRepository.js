@@ -50,7 +50,7 @@ const getPlayListByGenre = async (seed_genrer) => {
 		})) || []
 
 	} catch (error) {
-		Notify.emit("onIntegrationError", "[Integration Spotify Error ] " + error);
+		Notify.emit("onIntegrationError", "[Integration Spotify Error ] " + error)
 	}
 }
 

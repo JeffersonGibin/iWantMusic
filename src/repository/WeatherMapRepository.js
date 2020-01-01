@@ -32,7 +32,7 @@ const getTemperatureByCoordinates = async (coordinates) => {
     try {
        return await getTemperature(null, coordinates)
     } catch (error) {
-        Notify.emit("onIntegrationError", "[Integration Open Weather Error ] " + error);
+        Notify.emit("onIntegrationError", "[Integration Open Weather Error ] " + error)
     }
 }
 
@@ -40,7 +40,7 @@ const getTemperatureByCityName = async (city_name) => {
     try {
        return await getTemperature(city_name)
     } catch (error) {
-        Notify.emit("onIntegrationError", "[Integration Open Weather Error ] " + error);
+        Notify.emit("onIntegrationError", "[Integration Open Weather Error ] " + error)
     }
 }
 

@@ -8,14 +8,14 @@ module.exports.welcome = (req, res) => {
     res.status(200).json({
         application: "Welcome :)",
         now: new Date()
-    });
+    })
 }
 
 module.exports.routeVersion = (req, res) => {
     res.status(200).json({
         application: "iWantMusic",
         version: "1.0.0"
-    });
+    })
 }
 
 module.exports.routeRecomendationMusic = (req, res) => {
@@ -29,7 +29,7 @@ module.exports.routeRecomendationMusic = (req, res) => {
         res.status(200).json({
             status: false,
             msg: MSG_INPUT_REQUIRED
-        });
+        })
     }
 
     PlayList.getPlayList(req, res, {

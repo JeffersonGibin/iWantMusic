@@ -2,10 +2,6 @@
 
 ![](https://github.com/JeffersonGibin/iwantmusic/workflows/iWantMusic/badge.svg)
 
-# iWantMusic
-
-![](https://github.com/JeffersonGibin/iwantmusic/workflows/iWantMusic/badge.svg)
-
 ## Introdução
 
 The project was developed to participate in the selection process at iFood, these projects micro-service RESTful requests receiving as parameter name of city or coordinates and returns a playlist suggestion according to the current temperature.

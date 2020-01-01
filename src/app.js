@@ -1,5 +1,4 @@
 const cors = require('cors')
-const dotenv = require('dotenv')
 const express = require('express')
 const bodyParser = require('body-parser')
 const swaggerUi = require('swagger-ui-express'), swaggerDocument = require('../swagger/swagger.json')
@@ -14,7 +13,6 @@ app.use(cors())
 app.use(bodyParser.json())
 app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
-app.dotEnv = dotenv.config({ path: __dirname + '/../env/.env' })
 
 app.use((err, req, res, next) => {
     if (err) {

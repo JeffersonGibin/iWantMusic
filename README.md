@@ -3,12 +3,7 @@
 ![](https://github.com/JeffersonGibin/iwantmusic/workflows/iWantMusic/badge.svg)
 ![npm version](https://img.shields.io/npm/v/npm?label=npm%20version)
 
-> All real description of test can find is here -> [Description Oficial of iFood](https://github.com/ifood/ifood-backend-advanced-test)
-
-
-## Introdução
-
-The project was developed to participate in the selection process at iFood, these projects micro-service RESTful requests receiving as parameter name of city or coordinates and returns a playlist suggestion according to the current temperature.
+The project was developed to participate in the selection process at iFood, you can find more details [here](https://github.com/ifood/ifood-backend-advanced-test).
 
 ## Simple Steps to Start Project
 1. Clone the repository **`iwantmusic`**.
@@ -31,14 +26,14 @@ WEATHER_APP_ID=
 ## Files and Folders Structure
 
 * **`Cache:`**  To ensure resilience in a symbolic way, a .json file was used as the application cache for situations where APIs fail to deliver content.
-* **`Constansts:`** contains messages and fixed values for business rules.
-* **`Controller:`** responsible for controlling the delivery of information for a route.
+* **`Constansts:`** contains messages and constant values for business rules.
+* **`Controller:`** responsible for controlling the route requests.
 * **`Repository:`** application data layer.
-* **`Service:`** stores every business rule of the application.
-* **`Utils:`**  formatting functions.
-* **`app.js:`** import the necessary libraries and control every application.
+* **`Service:`** business rule of the application.
+* **`Utils:`**  utility functions and helpers like formating.
+* **`app.js:`** import the necessary libraries and control the application.
 * **`Notify:`** application notification layer.
-* **`route.js:`** stores all functions used in application routes.
+* **`route.js:`** application routes.
 * **`server.js:`** imports the application and starts the server.
 
 ## Business rule used

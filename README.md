@@ -48,7 +48,7 @@ WEATHER_APP_ID=
 * Otherwise, if it's freezing outside, suggests classical music tracks
 
 
-## Tecnologias utilizadas
+## Technologies used
 
 - Node.js (express, axios, cors e swagger-ui-express)
 - Docker

@@ -3,7 +3,6 @@ name: iWantMusic
 on: 
   push:
     paths:
-    - '!docker-compose.yaml'
     - '!README.md'
     branches: 
       - master

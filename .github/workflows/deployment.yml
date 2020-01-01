@@ -2,8 +2,6 @@ name: iWantMusic
 
 on: 
   push:
-    paths:
-    - '!README.md'
     branches: 
       - master
 jobs:

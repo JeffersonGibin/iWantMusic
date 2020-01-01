@@ -36,7 +36,7 @@ WEATHER_APP_ID=
 * **`Repository:`** application data layer.
 * **`Service:`** stores every business rule of the application.
 * **`Utils:`**  formatting functions.
-* **`app.js:`** imports all required libraries and initiates necessary application configurations.
+* **`app.js:`** import the necessary libraries and control every application.
 * **`Notify:`** application notification layer.
 * **`route.js:`** stores all functions used in application routes.
 * **`server.js:`** imports the application and starts the server.

@@ -9,7 +9,6 @@ See [Description Oficial of iFood](https://github.com/ifood/ifood-backend-advanc
 
 The project was developed to participate in the selection process at iFood, these projects micro-service RESTful requests receiving as parameter name of city or coordinates and returns a playlist suggestion according to the current temperature.
 
-----
 ## Simple Steps to Start Project
 1. Clone the repository **`iwantmusic`**.
 2. Make sure you have **`docker`** and **`docker-compose`** installed on your machine.

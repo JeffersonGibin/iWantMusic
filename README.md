@@ -1,6 +1,7 @@
 # iWantMusic
 
 ![](https://github.com/JeffersonGibin/iwantmusic/workflows/iWantMusic/badge.svg)
+![npm version](https://img.shields.io/npm/v/npm?label=npm%20version)
 
 > All real description of test can find is here -> [Description Oficial of iFood](https://github.com/ifood/ifood-backend-advanced-test)
 

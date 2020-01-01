@@ -8,6 +8,10 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/home/src/app:rw
+    environment:
+     - SPOTIFY_CLIENT_ID=
+     - SPOTIFY_SECRET_ID=
+     - WEATHER_APP_ID=
     ports:
       - "4000:4000"
     command: sh -c 'npm i && npm run start'

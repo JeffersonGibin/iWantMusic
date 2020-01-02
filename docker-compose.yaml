@@ -3,6 +3,7 @@ version: '3'
 services:
   backend:
     container_name: iwantmusic
+    restart: always
     build:
       context: ./
       dockerfile: Dockerfile

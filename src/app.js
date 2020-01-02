@@ -2,6 +2,7 @@ const cors = require('cors')
 const express = require('express')
 const bodyParser = require('body-parser')
 const swaggerUi = require('swagger-ui-express'), swaggerDocument = require('../swagger/swagger.json')
+const helmet = require("helmet")
 
 const MessageConstant = require("./constants/MessageConstant")
 const playlistCache = require("./cache/cache.json")
@@ -15,9 +16,9 @@ const app = express()
 /**
  * Initialing settings 
  */
+app.use(helmet())
 app.use(cors())
 app.use(bodyParser.json())
-app.disable('x-powered-by')
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use((err, req, res, next) => {

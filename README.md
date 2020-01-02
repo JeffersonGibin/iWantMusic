@@ -46,6 +46,6 @@ WEATHER_APP_ID=
 
 ## Technologies used
 
-- Node.js (express, axios, cors e swagger-ui-express)
+- Node.js (express, axios, cors, helmet and swagger-ui-express)
 - Docker
 - Github actions

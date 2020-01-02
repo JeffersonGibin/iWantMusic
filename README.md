@@ -16,7 +16,7 @@ SPOTIFY_CLIENT_ID=
 SPOTIFY_SECRET_ID=
 WEATHER_APP_ID=
 ```
-5. Run the following command to start the application in the docker container. **`sudo docker-make up --build`**.
+5. Run the following command to start the application in the docker container. **`sudo docker-compose up --build`**.
 
 ## You may need :)
 
@@ -26,7 +26,7 @@ WEATHER_APP_ID=
 ## Files and Folders Structure
 
 * **`Cache:`**  To ensure resilience in a symbolic way, a .json file was used as the application cache for situations where APIs fail to deliver content.
-* **`Constansts:`** contains messages and constant values for business rules.
+* **`Constants:`** contains messages and constant values for business rules.
 * **`Controller:`** responsible for controlling the route requests.
 * **`Repository:`** application data layer.
 * **`Service:`** business rule of the application.

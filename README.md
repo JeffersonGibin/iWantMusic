@@ -1,6 +1,6 @@
 # iWantMusic
 
-![](https://github.com/JeffersonGibin/iwantmusic/workflows/iWantMusic/badge.svg)
+![](https://github.com/JeffersonGibin/iWantMusic/workflows/iWantMusic/badge.svg)
 ![npm version](https://img.shields.io/npm/v/npm?label=npm%20version)
 
 The project was developed to participate in the selection process at iFood, you can find more details [here](https://github.com/ifood/ifood-backend-advanced-test).
